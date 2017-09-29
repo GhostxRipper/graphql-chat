@@ -1,0 +1,42 @@
+type Chatroom {
+	_id: ID
+	title: String
+	users: [User]
+	messages: [Message]
+}
+
+type User {
+	_id: ID
+	displayName: String
+}
+
+type Message {
+	_id: ID
+	text: String
+	user: User
+	createdAt: String
+}
+
+type Query {
+	chatrooms: [Chatroom]
+	chatroom(id:String!): Chatroom
+	messages(chatroomId:String): [Message]
+	users(chatroomId:String): [User]
+	user(id:String, search:String): User
+}
+
+type Mutation {
+	addMessage(text: String!, userId: String!, chatroomId: String!): Message
+	addChatroom(title: String!): Chatroom
+	addUser(displayName: String!, chatroomId: String!): User
+}
+
+type Subscription {
+	messageAdded(chatroomId: String!): Message
+}
+
+schema {
+	query: Query
+	mutation: Mutation
+	subscription: Subscription
+}

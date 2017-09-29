@@ -1,0 +1,30 @@
+{
+  "name": "graphql-chat",
+  "version": "1.0.0",
+  "main": "server/index.js",
+  "author": "GhostxRipper <yann_ams@icloud.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "nodemon": "^1.12.1"
+  },
+  "scripts": {
+    "dev": "nodemon server/index.js --watch server --exec babel-node",
+    "build": "rm -rf dist && babel server --out-dir dist && cp server/schema.graphql dist/schema.graphql",
+    "prestart": "yarn build",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "compression": "^1.7.1",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "graphql": "^0.11.7",
+    "graphql-server-express": "^1.1.6",
+    "graphql-subscriptions": "^0.5.4",
+    "graphql-tools": "^2.4.0",
+    "mongoose": "^4.12.1",
+    "subscriptions-transport-ws": "^0.9.1"
+  }
+}
